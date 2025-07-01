@@ -28,6 +28,7 @@ jobs:
         run: |
           git config user.name "Zentheriun"
           git config user.email "Zentheriun@gmail.com"
+          git pull origin main --rebase || true
           git add log.txt
           git commit -m "✅ Commit automático diario" || echo "Nada para commitear"
           git push https://x-access-token:${TOKEN}@github.com/Zentheriun/Contributions.git HEAD:main
