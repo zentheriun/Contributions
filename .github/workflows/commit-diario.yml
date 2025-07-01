@@ -1,0 +1,26 @@
+name: Commit automático diario
+
+on:
+  schedule:
+    - cron: '0 12 * * *'  # Todos los días a las 7am Colombia (UTC-5)
+  workflow_dispatch:
+
+jobs:
+  auto-commit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clonar repositorio
+        uses: actions/checkout@v4
+
+      - name: Agregar línea con la fecha
+        run: |
+          echo "Contribución del día: $(date)" >> log.txt
+
+      - name: Hacer commit y push
+        run: |
+          git config user.name "Zentheriun"
+          git config user.email "Zentheriun@gmail.com"
+          git add log.txt
+          git commit -m "✅ Commit automático diario"
+          git push
