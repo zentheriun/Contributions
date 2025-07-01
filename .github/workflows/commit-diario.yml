@@ -5,6 +5,9 @@ on:
     - cron: '0 12 * * *'  # Todos los días a las 7am Colombia (UTC-5)
   workflow_dispatch:
 
+permissions:
+  contents: write  # 🔥 Esto da permisos de push al bot
+
 jobs:
   auto-commit:
     runs-on: ubuntu-latest
